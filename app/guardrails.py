@@ -58,6 +58,12 @@ _INJECTION_PATTERNS = [
     r"(disable|bypass|turn off|remove) (your )?(safety|guardrails?|rules|restrictions?|filters?)",
     r"reveal (your|the) (prompt|instructions|rules)",
     r"you are now",
+    r"(instructions?|rules?|prompt) (you were|you have been|you are|i gave you|were) (given|told|using)",
+    r"(show|print|display|tell|repeat|share) me (the |your )?(instructions?|prompt|rules)( you| that)?",
+    r"(no|without) (rules|restrictions|limits|guardrails|filters)",
+    r"from now on[, ]+(you|ignore|forget|act)",
+    r"forget (the |all |your )?(previous|prior|earlier) (ones|rules|instructions)?",
+    r"safety (filters?|rules|guardrails?)",
 ]
 _INJECTION_RE = re.compile("|".join(_INJECTION_PATTERNS), re.I)
 
@@ -117,12 +123,17 @@ def check_input(query: Optional[str]) -> InputResult:
 
 # ---------- output guardrails (mainly for the LLM phase) ----------
 _ASKS_SECRET_RE = re.compile(
-    r"(please |kindly |you (should|must|need to) )?"
-    r"(share|send|provide|enter|tell me|give me|type|reply with|confirm)[^.\n]{0,40}"
+    r"\b(share|send|provide|enter|tell me|give me|type|reply with|confirm|read out)\b[^.\n]{0,40}"
     r"\b(your|the)\b[^.\n]{0,15}\b(otp|pin|password|cvv|card number|passcode)\b",
     re.I,
 )
-_NEGATION_NEAR = re.compile(r"\b(never|do not|don't|dont|not|no one|nobody|should not|must not)\b", re.I)
+# A sentence that warns or tells the user what to do after a leak is not a request for the secret.
+_SAFE_CONTEXT_RE = re.compile(
+    r"\b(never|do not|don't|dont|not|no one|nobody|should not|must not|change|reset|block|report|"
+    r"already|if you|always sends|without)\b",
+    re.I,
+)
+_SENT_SPLIT_RE = re.compile(r"(?<=[.!?])\s+|\n+")
 _URL_RE = re.compile(r"https?://|www\.", re.I)
 _PHONE_OUT_RE = re.compile(r"(?<!\d)(?:\+?\d[\d\- ]{7,}\d)(?!\d)")
 _FORBIDDEN_CLAIMS_RE = re.compile(r"\b(guarantee|100% (safe|secure)|will definitely recover)\b", re.I)
@@ -136,9 +147,8 @@ class OutputResult:
 
 def check_output(text: str) -> OutputResult:
     reasons = []
-    for m in _ASKS_SECRET_RE.finditer(text):
-        window = text[max(0, m.start() - 40): m.end()]
-        if not _NEGATION_NEAR.search(window):
+    for sent in _SENT_SPLIT_RE.split(text):
+        if _ASKS_SECRET_RE.search(sent) and not _SAFE_CONTEXT_RE.search(sent):
             reasons.append("asks user for a secret")
             break
     if _URL_RE.search(text):
