@@ -1,13 +1,15 @@
-"""Command-line chat. Usage:  python chat.py --phase retrieval|llm|hybrid"""
+"""Command-line chat. Usage:  python chat.py   (only the phases enabled in app/config.py are available)"""
 import argparse
 
+from app.config import enabled_phases
 from app.llm import get_llm
 from app.pipeline import ScamSpotter
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--phase", choices=["retrieval", "llm", "hybrid"], default="retrieval")
+    phases = enabled_phases()
+    ap.add_argument("--phase", choices=list(phases), default=phases[0])
     args = ap.parse_args()
     llm = get_llm() if args.phase != "retrieval" else None
     bot = ScamSpotter(llm=llm)

@@ -72,7 +72,7 @@ def summarise(rows, lat):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cases", default=str(ROOT / "data" / "test_cases.json"))
-    ap.add_argument("--phases", nargs="+", default=["retrieval"], choices=["retrieval", "llm", "hybrid"])
+    ap.add_argument("--phases", nargs="+", default=["llm"], choices=["retrieval", "llm", "hybrid"])
     ap.add_argument("--tag", default="dev")
     args = ap.parse_args()
 

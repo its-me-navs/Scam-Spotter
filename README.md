@@ -5,6 +5,11 @@ It compares two ways of building a safety-critical assistant and puts one shared
 
 **Research question:** when should a safety-critical system use a generative LLM, and when is verified retrieval safer?
 
+## Current status
+
+**Only Phase 1 (LLM chatbot) is enabled.** The Phase 2 retrieval code and the hybrid router are in the repo but switched off in the CLI and UI.
+To enable them for a later demo, set `SCAMSPOTTER_PHASES=llm,retrieval` (or `llm,retrieval,hybrid`), or edit `DEFAULT_PHASES` in `app/config.py`.
+
 ## Architecture
 
 ```
@@ -23,11 +28,13 @@ user query -> input guardrails -> phase -> output guardrails -> reply
 
 ```bash
 pip install -r requirements.txt
-python chat.py --phase retrieval          # or llm / hybrid
+python chat.py                            # Phase 1 only, by default
 streamlit run ui/streamlit_app.py
+SCAMSPOTTER_PHASES=llm,retrieval streamlit run ui/streamlit_app.py   # later: show Phase 2 too
 python -m pytest -q tests
-python -m eval.run_eval                                              # dev set
-python -m eval.run_eval --cases data/heldout_cases.json --tag heldout   # held-out set
+python -m eval.run_eval                                              # Phase 1, dev set
+python -m eval.run_eval --cases data/heldout_cases.json --tag heldout   # Phase 1, held-out set
+python -m eval.run_eval --phases llm retrieval hybrid                 # compare all phases
 ```
 
 Phase 1 uses a built-in mock LLM by default so everything runs offline. For a real model:
@@ -37,7 +44,7 @@ export LLM_PROVIDER=anthropic   # or openai
 export LLM_MODEL=<model name>   # plus the provider's API key variable
 ```
 
-## Results (retrieval phase, no LLM)
+## Results (Phase 2 retrieval, recorded for the later comparison)
 
 | set | cases | scam accuracy | wrong answers | safe fallback | correct refusals |
 |---|---|---|---|---|---|
