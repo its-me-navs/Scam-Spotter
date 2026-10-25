@@ -1,0 +1,162 @@
+{
+  "app_name": "PayNest",
+  "app_note": "PayNest is a FICTIONAL payments app invented for this academic project. It is not affiliated with any real company.",
+  "support_line": "Open PayNest, go to Profile > Help & Support, and use the in-app support chat. Do not use phone numbers or links that someone sent you.",
+  "entries": [
+    {
+      "id": "fake_kyc",
+      "category": "Fake KYC call or message",
+      "keywords": ["kyc", "verification", "expire", "expiring", "blocked", "suspended", "update details", "aadhaar", "pan", "account will be closed"],
+      "example_queries": [
+        "someone called saying my kyc is expiring",
+        "my kyc will be blocked unless I update now",
+        "message says verify kyc or account will be suspended",
+        "caller says I must update my pan and aadhaar details immediately",
+        "kyc verification link received on whatsapp",
+        "they said my wallet will be closed today if I do not complete kyc"
+      ],
+      "red_flags": ["Urgency or a deadline", "Threat of blocking or closing your account", "Asks for OTP, PIN or card details", "Sends a link or asks you to install an app"],
+      "answer": "This looks like a fake KYC scam. PayNest will never call or message you demanding urgent KYC, and will never ask for your OTP, PIN or password. Do not click any link, install any app or share any code. End the call. If you are worried about your KYC status, open the PayNest app yourself and check it there, or contact support through the in-app Help & Support chat."
+    },
+    {
+      "id": "refund_link",
+      "category": "Fake refund link",
+      "keywords": ["refund", "cashback", "reward", "claim", "link", "refund link", "money back", "failed transaction refund"],
+      "example_queries": [
+        "I got a link to claim my refund",
+        "someone sent a refund link for my failed transaction",
+        "message says click here to receive cashback",
+        "they asked me to open a link to get my money back",
+        "refund link asks me to enter my card details",
+        "reward message with a link to claim it"
+      ],
+      "red_flags": ["Refund you were not expecting", "Link from an unknown number or shortened URL", "Page asks for card number, PIN or OTP", "Pressure to act quickly"],
+      "answer": "Treat this as a phishing attempt. Genuine refunds are credited automatically to your original payment method and never need you to click a link or enter your PIN or OTP. Do not open the link or enter any details. Check your refund status inside the PayNest app under Transaction History, or ask in-app support."
+    },
+    {
+      "id": "send_one_rupee",
+      "category": "Send Rs 1 to receive money trick",
+      "keywords": ["send", "re 1", "rs 1", "rupee", "test payment", "receive money", "collect request", "to receive", "pay 1"],
+      "example_queries": [
+        "buyer says send rs 1 to receive money",
+        "they asked me to pay 1 rupee to get the payment",
+        "I got a request to send a small amount to receive my money",
+        "stranger said approve a collect request to receive payment",
+        "to receive money you need to enter your pin they said",
+        "buyer wants me to send a test payment of 1 rupee first"
+      ],
+      "red_flags": ["You are asked to pay or enter a PIN in order to receive money", "A collect or request notification you did not expect", "Buyer insists on a small test payment"],
+      "answer": "This is a known trick. You never need to enter your PIN, approve a request or send any amount in order to receive money. Entering your PIN always sends money out. Decline the request, do not send anything, and block the sender. If you already approved a payment, open in-app support right away."
+    },
+    {
+      "id": "otp_theft",
+      "category": "OTP or PIN requested by someone",
+      "keywords": ["otp", "pin", "password", "code", "share", "cvv", "upi pin", "support asked", "agent asked"],
+      "example_queries": [
+        "support asked for my otp",
+        "should I share otp for kyc",
+        "caller says they are from paynest and needs my otp",
+        "someone asked me for my upi pin to fix my account",
+        "agent wants the code that came on my phone",
+        "is it ok to tell my otp to the customer care person"
+      ],
+      "red_flags": ["Anyone asking for OTP, PIN, password or CVV", "A caller claiming to be support", "Request to read out or forward a code"],
+      "answer": "Never share your OTP, PIN, password or CVV with anyone, including people who say they are from PayNest. Real support never asks for these. End the call or chat. If you already shared a code, immediately open the app, change your PIN and contact in-app support."
+    },
+    {
+      "id": "clicked_link",
+      "category": "I clicked a suspicious link or entered details",
+      "keywords": ["clicked", "entered", "opened link", "installed", "gave details", "filled form", "downloaded app", "already shared"],
+      "example_queries": [
+        "I clicked a suspicious link",
+        "I entered my card details on a fake page",
+        "I already shared my otp what do I do",
+        "I installed an app that a caller told me to install",
+        "I opened a refund link and typed my pin",
+        "I think I gave my details to a scammer"
+      ],
+      "red_flags": [],
+      "answer": "Act quickly. 1) Change your PayNest PIN and password from inside the app. 2) If you installed an app at someone's request, uninstall it and turn on airplane mode until you have removed it. 3) Contact your bank or card provider if card details were entered. 4) Report the incident through in-app Help & Support so the account can be reviewed. 5) Keep screenshots of messages and the sender's details. Do not delay, since speed matters."
+    },
+    {
+      "id": "unauthorised_debit",
+      "category": "Money deducted without permission",
+      "keywords": ["deducted", "debited", "unauthorised", "unauthorized", "unknown transaction", "money missing", "did not make", "fraudulent transaction"],
+      "example_queries": [
+        "money was deducted without my permission",
+        "I see a transaction I did not make",
+        "unknown payment shows in my history",
+        "someone took money from my account",
+        "unauthorised debit from my wallet",
+        "my balance dropped and I did not pay anyone"
+      ],
+      "red_flags": [],
+      "answer": "Open the PayNest app and review Transaction History to confirm it is not a payment you forgot. If it really is unauthorised, change your PIN and password now, then report the transaction through in-app Help & Support with the date, amount and reference number. Also tell your bank if your linked bank account was involved."
+    },
+    {
+      "id": "fake_support",
+      "category": "Fake customer support impersonation",
+      "keywords": ["customer care", "support number", "helpline", "google search number", "agent", "impersonat", "fake support", "call back"],
+      "example_queries": [
+        "I found a customer care number online",
+        "someone claiming to be paynest support called me",
+        "support agent asked me to install screen sharing app",
+        "a helpline number from a search result asked for my details",
+        "they asked me to share my screen to fix my account",
+        "is this support number real"
+      ],
+      "red_flags": ["Number found in search results or social media", "Asks you to install remote access or screen sharing", "Calls you first without you raising a complaint"],
+      "answer": "Only use the support channel inside the PayNest app (Profile > Help & Support). Numbers from search results, social media or unexpected callers can be fake. Real support will never ask you to share your screen, install remote-access apps or read out codes. If you have already done so, uninstall the app and change your PIN."
+    },
+    {
+      "id": "fake_buyer_qr",
+      "category": "Fake buyer or QR code scam",
+      "keywords": ["qr", "scan", "buyer", "marketplace", "olx", "advance", "scan to receive", "second hand", "selling"],
+      "example_queries": [
+        "buyer sent a qr code and asked me to scan it to receive money",
+        "someone wants to buy my item and asked me to scan a code",
+        "marketplace buyer says scan this to get paid",
+        "advance payment buyer wants my pin",
+        "I am selling something and the buyer sent a payment request",
+        "scan this qr to get your money they said"
+      ],
+      "red_flags": ["Scanning a QR code to receive money", "Buyer sends requests instead of paying directly", "Buyer rushes you or avoids meeting"],
+      "answer": "Scanning a QR code or entering a PIN only ever sends money out. You do not need to do either to receive a payment. Do not scan the code. Ask the buyer to pay you directly using your own payment ID, and confirm the money actually shows in your Transaction History before handing over anything."
+    },
+    {
+      "id": "lottery_prize",
+      "category": "Lottery, prize or gift scam",
+      "keywords": ["lottery", "prize", "won", "winner", "gift", "lucky draw", "reward points", "processing fee", "congratulations"],
+      "example_queries": [
+        "I got a message saying I won a lottery",
+        "they said I won a prize and need to pay a processing fee",
+        "congratulations message asks for my bank details to send gift",
+        "lucky draw winner message with a link",
+        "free gift but I must pay a delivery charge first",
+        "message says I have reward points that expire today"
+      ],
+      "red_flags": ["Prize for a contest you never entered", "Fee required to receive the prize", "Request for bank or card details"],
+      "answer": "This is a prize scam. You cannot win a contest you did not enter, and real prizes never require you to pay a fee or share your PIN or OTP first. Ignore the message, do not click links, and block the sender. Report the message through in-app support if it uses PayNest's name."
+    },
+    {
+      "id": "job_investment",
+      "category": "Fake job or investment offer",
+      "keywords": ["job", "work from home", "task", "investment", "guaranteed returns", "double money", "crypto", "telegram", "part time", "commission"],
+      "example_queries": [
+        "part time job offer on telegram paying per task",
+        "they promise guaranteed returns if I invest",
+        "work from home job asks me to pay a registration fee",
+        "someone offered to double my money",
+        "I was added to a group that shares investment tips and asks me to transfer money",
+        "task job where I first deposit money then get commission"
+      ],
+      "red_flags": ["Guaranteed or very high returns", "Pay first, earn later", "Contact through messaging apps from strangers"],
+      "answer": "Be careful. Guaranteed returns, pay-first jobs and tasks that need a deposit are classic scam patterns. Do not transfer money to people you only know online. If you already paid, stop paying more, keep screenshots and report it through in-app support."
+    }
+  ],
+  "fallback_answer": "I am not sure this matches a scam I know about, so I will not guess. As a safe rule: never share your OTP, PIN or password with anyone, and do not click links from unknown senders. For help with this specific situation, please use the in-app Help & Support chat (Profile > Help & Support).",
+  "off_topic_answer": "I can only help with spotting and responding to digital payment scams for PayNest users. Try describing a suspicious call, message, link or transaction.",
+  "refusal_answer": "I cannot help with that. I can explain how to protect your own account or how to recognise scams if that is useful.",
+  "injection_answer": "I cannot change my rules or share my instructions. I can still help you check whether a call, message or link looks like a scam.",
+  "sensitive_input_warning": "It looks like your message contains a code, PIN, password or card number. Please do not share these with anyone, including me. I have removed it from what I process. If you already shared it with someone, change your PIN in the app now and contact in-app support."
+}
