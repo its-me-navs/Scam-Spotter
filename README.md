@@ -39,10 +39,8 @@ python -m eval.run_eval --phases llm retrieval hybrid                 # compare 
 
 Phase 1 uses a built-in mock LLM by default so everything runs offline. For a real model:
 
-```bash
-export LLM_PROVIDER=anthropic   # or openai
-export LLM_MODEL=<model name>   # plus the provider's API key variable
-```
+Copy `.env.example` to `.env` and fill in your provider, key and model. The app loads it automatically, and `.env` is git-ignored so your key stays off GitHub.
+(Setting the same names as environment variables also works, and takes priority over `.env`.)
 
 ## Results (Phase 2 retrieval, recorded for the later comparison)
 
