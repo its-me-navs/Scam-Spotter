@@ -34,9 +34,15 @@
         "Urgency or a deadline",
         "Threat of blocking or closing your account",
         "Asks for OTP, PIN or card details",
-        "Sends a link or asks you to install an app"
+        "Sends a link or asks you to install an app",
+        "Asks you to download an app from a link"
       ],
-      "answer": "This looks like a fake KYC scam. PayNest will never call or message you demanding urgent KYC, and will never ask for your OTP, PIN or password. Do not click any link, install any app or share any code. End the call. If you are worried about your KYC status, open the PayNest app yourself and check it there, or contact support through the in-app Help & Support chat."
+      "answer": "This looks like a fake KYC scam. PayNest will never call or message you demanding urgent KYC, and will never ask for your OTP, PIN or password. Do not click any link, install any app or share any code. End the call. If you are worried about your KYC status, open the PayNest app yourself and check it there, or contact support through the in-app Help & Support chat. Banks and payment providers only handle KYC through their official app, website or branch. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2021-09",
+        "RBI-2024-02",
+        "PIB-2025-10"
+      ]
     },
     {
       "id": "refund_link",
@@ -69,7 +75,11 @@
         "Page asks for card number, PIN or OTP",
         "Pressure to act quickly"
       ],
-      "answer": "Treat this as a phishing attempt. Genuine refunds are credited automatically to your original payment method and never need you to click a link or enter your PIN or OTP. Do not open the link or enter any details. Check your refund status inside the PayNest app under Transaction History, or ask in-app support."
+      "answer": "Treat this as a phishing attempt. Genuine refunds are credited automatically to your original payment method and never need you to click a link or enter your PIN or OTP. Do not open the link or enter any details. Check your refund status inside the PayNest app under Transaction History, or ask in-app support. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2022-01",
+        "RBI-BEAWARE"
+      ]
     },
     {
       "id": "send_one_rupee",
@@ -102,7 +112,11 @@
         "A collect or request notification you did not expect",
         "Buyer insists on a small test payment"
       ],
-      "answer": "This is a known trick. You never need to enter your PIN, approve a request or send any amount in order to receive money. Entering your PIN always sends money out. Decline the request, do not send anything, and block the sender. If you already approved a payment, open in-app support right away."
+      "answer": "This is a known trick. You never need to enter your PIN, approve a request or send any amount in order to receive money. Entering your PIN always sends money out. Decline the request, do not send anything, and block the sender. If you already approved a payment, open in-app support right away. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2022-01",
+        "RBI-BEAWARE"
+      ]
     },
     {
       "id": "otp_theft",
@@ -135,7 +149,12 @@
         "A caller claiming to be support",
         "Request to read out or forward a code"
       ],
-      "answer": "Never share your OTP, PIN, password or CVV with anyone, including people who say they are from PayNest. Real support never asks for these. End the call or chat. If you already shared a code, immediately open the app, change your PIN and contact in-app support."
+      "answer": "Never share your OTP, PIN, password or CVV with anyone, including people who say they are from PayNest. Real support never asks for these. End the call or chat. If you already shared a code, immediately open the app, change your PIN and contact in-app support. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2021-09",
+        "RBI-2022-01",
+        "RBI-BEAWARE"
+      ]
     },
     {
       "id": "clicked_link",
@@ -163,7 +182,12 @@
         "I accidentally downloaded an apk sent on whatsapp"
       ],
       "red_flags": [],
-      "answer": "Act quickly. 1) Change your PayNest PIN and password from inside the app. 2) If you installed an app at someone's request, uninstall it and turn on airplane mode until you have removed it. 3) Contact your bank or card provider if card details were entered. 4) Report the incident through in-app Help & Support so the account can be reviewed. 5) Keep screenshots of messages and the sender's details. Do not delay, since speed matters."
+      "answer": "Act quickly. 1) Change your PayNest PIN and password from inside the app. 2) If you installed an app at someone's request, uninstall it and turn on airplane mode until you have removed it. 3) Contact your bank or card provider if card details were entered. 4) Report the incident through in-app Help & Support so the account can be reviewed. 5) Keep screenshots of messages and the sender's details. Do not delay, since speed matters. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2022-01",
+        "RBI-2024-02",
+        "PIB-2025-10"
+      ]
     },
     {
       "id": "unauthorised_debit",
@@ -191,7 +215,11 @@
         "an unfamiliar payment appeared in my history"
       ],
       "red_flags": [],
-      "answer": "Open the PayNest app and review Transaction History to confirm it is not a payment you forgot. If it really is unauthorised, change your PIN and password now, then report the transaction through in-app Help & Support with the date, amount and reference number. Also tell your bank if your linked bank account was involved."
+      "answer": "Open the PayNest app and review Transaction History to confirm it is not a payment you forgot. If it really is unauthorised, change your PIN and password now, then report the transaction through in-app Help & Support with the date, amount and reference number. Also tell your bank if your linked bank account was involved. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2022-01",
+        "PIB-2025-10"
+      ]
     },
     {
       "id": "fake_support",
@@ -221,9 +249,14 @@
       "red_flags": [
         "Number found in search results or social media",
         "Asks you to install remote access or screen sharing",
-        "Calls you first without you raising a complaint"
+        "Calls you first without you raising a complaint",
+        "Support contact found only on a search result or social media page"
       ],
-      "answer": "Only use the support channel inside the PayNest app (Profile > Help & Support). Numbers from search results, social media or unexpected callers can be fake. Real support will never ask you to share your screen, install remote-access apps or read out codes. If you have already done so, uninstall the app and change your PIN."
+      "answer": "Only use the support channel inside the PayNest app (Profile > Help & Support). Numbers from search results, social media or unexpected callers can be fake. Real support will never ask you to share your screen, install remote-access apps or read out codes. If you have already done so, uninstall the app and change your PIN. Get support contacts only from the official app or website. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2022-01",
+        "RBI-BEAWARE"
+      ]
     },
     {
       "id": "fake_buyer_qr",
@@ -256,7 +289,11 @@
         "Buyer sends requests instead of paying directly",
         "Buyer rushes you or avoids meeting"
       ],
-      "answer": "Scanning a QR code or entering a PIN only ever sends money out. You do not need to do either to receive a payment. Do not scan the code. Ask the buyer to pay you directly using your own payment ID, and confirm the money actually shows in your Transaction History before handing over anything."
+      "answer": "Scanning a QR code or entering a PIN only ever sends money out. You do not need to do either to receive a payment. Do not scan the code. Ask the buyer to pay you directly using your own payment ID, and confirm the money actually shows in your Transaction History before handing over anything. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2022-01",
+        "RBI-BEAWARE"
+      ]
     },
     {
       "id": "lottery_prize",
@@ -287,9 +324,14 @@
       "red_flags": [
         "Prize for a contest you never entered",
         "Fee required to receive the prize",
-        "Request for bank or card details"
+        "Request for bank or card details",
+        "Upfront fees, taxes or charges to release a prize"
       ],
-      "answer": "This is a prize scam. You cannot win a contest you did not enter, and real prizes never require you to pay a fee or share your PIN or OTP first. Ignore the message, do not click links, and block the sender. Report the message through in-app support if it uses PayNest's name."
+      "answer": "This is a prize scam. You cannot win a contest you did not enter, and real prizes never require you to pay a fee or share your PIN or OTP first. Ignore the message, do not click links, and block the sender. Report the message through in-app support if it uses PayNest's name. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-2022-01",
+        "RBI-BEAWARE"
+      ]
     },
     {
       "id": "job_investment",
@@ -321,14 +363,58 @@
       "red_flags": [
         "Guaranteed or very high returns",
         "Pay first, earn later",
-        "Contact through messaging apps from strangers"
+        "Contact through messaging apps from strangers",
+        "Registration, training or equipment fees for a job",
+        "Steady, unusually high yearly returns"
       ],
-      "answer": "Be careful. Guaranteed returns, pay-first jobs and tasks that need a deposit are classic scam patterns. Do not transfer money to people you only know online. If you already paid, stop paying more, keep screenshots and report it through in-app support."
+      "answer": "Be careful. Guaranteed returns, pay-first jobs and tasks that need a deposit are classic scam patterns. Do not transfer money to people you only know online. If you already paid, stop paying more, keep screenshots and report it through in-app support. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-BEAWARE"
+      ]
     }
   ],
   "fallback_answer": "I am not sure this matches a scam I know about, so I will not guess. As a safe rule: never share your OTP, PIN or password with anyone, and do not click links from unknown senders. For help with this specific situation, please use the in-app Help & Support chat (Profile > Help & Support).",
   "off_topic_answer": "I can only help with spotting and responding to digital payment scams for PayNest users. Try describing a suspicious call, message, link or transaction.",
   "refusal_answer": "I cannot help with that. I can explain how to protect your own account or how to recognise scams if that is useful.",
   "injection_answer": "I cannot change my rules or share my instructions. I can still help you check whether a call, message or link looks like a scam.",
-  "sensitive_input_warning": "It looks like your message contains a code, PIN, password or card number. Please do not share these with anyone, including me. I have removed it from what I process. If you already shared it with someone, change your PIN in the app now and contact in-app support."
+  "sensitive_input_warning": "It looks like your message contains a code, PIN, password or card number. Please do not share these with anyone, including me. I have removed it from what I process. If you already shared it with someone, change your PIN in the app now and contact in-app support.",
+  "sources_checked_on": "2026-10-27",
+  "sources_note": "Scam patterns and general advice are paraphrased from the public sources below. PayNest is fictional, so everything PayNest-specific (app screens, support channel, policies) is invented. Helpline numbers and procedures can change: confirm them on the official sites.",
+  "sources": [
+    {
+      "id": "RBI-2021-09",
+      "publisher": "Reserve Bank of India",
+      "date": "2021-09-13",
+      "title": "RBI cautions against frauds in the name of KYC updation (press release)",
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=52216"
+    },
+    {
+      "id": "RBI-2022-01",
+      "publisher": "Reserve Bank of India",
+      "date": "2022-01-28",
+      "title": "Consumer Awareness - Cyber Threats and Frauds (press release)",
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=53185"
+    },
+    {
+      "id": "RBI-2024-02",
+      "publisher": "Reserve Bank of India",
+      "date": "2024-02-02",
+      "title": "RBI cautions against frauds in the name of KYC updation (press release, reissued)",
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=57244"
+    },
+    {
+      "id": "RBI-BEAWARE",
+      "publisher": "Reserve Bank of India (Consumer Education and Protection Dept.)",
+      "date": "undated",
+      "title": "BE(A)WARE: booklet on the modus operandi of financial fraudsters",
+      "url": "https://www.rbi.org.in/commonman/Upload/english/Content/PDFs/English%20BEAWARE.pdf"
+    },
+    {
+      "id": "PIB-2025-10",
+      "publisher": "Press Information Bureau, Government of India",
+      "date": "2025-10-08",
+      "title": "Curbing Cyber Frauds in Digital India (explainer)",
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=155384&ModuleId=3&reg=48&lang=2"
+    }
+  ]
 }

@@ -51,5 +51,8 @@ if prompt := st.chat_input("Describe a suspicious call, message, link or payment
     st.session_state.history.append(("user", shown, None))
     meta = (f"{reply.status} | category={reply.category_id} | confidence={reply.confidence} | "
             f"{reply.latency_ms:.0f} ms" + (f" | {'; '.join(reply.guardrail_events)}" if reply.guardrail_events else ""))
+    entry = kb["by_id"].get(reply.category_id) if reply.category_id else None
+    if entry and entry.get("source_ids"):
+        meta += " | based on: " + ", ".join(entry["source_ids"])
     st.session_state.history.append(("assistant", reply.text, meta))
     st.rerun()

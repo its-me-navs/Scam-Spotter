@@ -53,6 +53,21 @@ The dev score is optimistic because the knowledge base was tuned on it. The held
 retrieval never gave a wrong answer, but it fell back on 35% of paraphrased scam descriptions.
 That gap is the case for the hybrid router. Run the same sets with `--phases llm hybrid` and a real model to complete the comparison.
 
+## Sources and accuracy
+
+The scam patterns and advice in `data/knowledge_base.json` are paraphrased from public Indian sources, listed with dates and links in the file's `sources` field (checked 2026-10-27):
+
+- RBI press release, 13 Sep 2021: frauds in the name of KYC updation
+- RBI press release, 28 Jan 2022: Consumer Awareness - Cyber Threats and Frauds
+- RBI press release, 2 Feb 2024: KYC updation fraud caution (reissued)
+- RBI BE(A)WARE booklet on the modus operandi of financial fraudsters (undated)
+- PIB explainer, 8 Oct 2025: Curbing Cyber Frauds in Digital India
+
+Each entry has `source_ids`, and the UI shows which sources a reply is based on. PayNest itself is fictional, so its app screens, support channel and policies are invented.
+The only real-world contacts the bot may mention are the National Cyber Crime Reporting Portal (cybercrime.gov.in) and the cybercrime helpline 1930. The output guardrail blocks any other website or helpline number as possibly invented.
+Official contact details and procedures can change, so the answers tell users to confirm them on the official sites.
+NPCI's own safety pages could not be read automatically during research, so they are not cited.
+
 ## Limitations
 
 - Keyword and regex guardrails can be bypassed by unusual phrasing. They are one layer, not a guarantee.
