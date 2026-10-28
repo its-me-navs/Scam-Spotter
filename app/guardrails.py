@@ -138,6 +138,17 @@ _URL_RE = re.compile(r"https?://|www\.", re.I)
 _PHONE_OUT_RE = re.compile(r"(?<!\d)(?:\+?\d[\d\- ]{7,}\d)(?!\d)")
 _FORBIDDEN_CLAIMS_RE = re.compile(r"\b(guarantee|100% (safe|secure)|will definitely recover)\b", re.I)
 
+# The only real-world contacts an answer may mention. They come from official sources listed in
+# data/knowledge_base.json ("sources"). Anything else that looks like a domain or helpline number is
+# treated as possibly invented and blocked.
+VERIFIED_CONTACTS = {"cybercrime.gov.in", "1930"}
+_DOMAIN_RE = re.compile(
+    r"\b[a-z0-9][a-z0-9\-]*(?:\.[a-z0-9\-]+)*\.(?:com|in|org|net|gov|co|io|app|info|xyz|me)\b", re.I
+)
+_HELPLINE_RE = re.compile(
+    r"\b(?:call|dial|helpline|toll[- ]free)\b[^.\n]{0,25}?(?<!\d)(\d{3,12})(?!\d)", re.I
+)
+
 
 @dataclass
 class OutputResult:
@@ -155,6 +166,10 @@ def check_output(text: str) -> OutputResult:
         reasons.append("contains a URL (could be invented)")
     if _PHONE_OUT_RE.search(text):
         reasons.append("contains a phone number (could be invented)")
+    if any(m.group(0).lower() not in VERIFIED_CONTACTS for m in _DOMAIN_RE.finditer(text)):
+        reasons.append("contains an unverified website (could be invented)")
+    if any(m.group(1) not in VERIFIED_CONTACTS for m in _HELPLINE_RE.finditer(text)):
+        reasons.append("contains an unverified helpline number (could be invented)")
     if _FORBIDDEN_CLAIMS_RE.search(text):
         reasons.append("makes an unverifiable guarantee")
     return OutputResult(not reasons, reasons)

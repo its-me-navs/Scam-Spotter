@@ -44,3 +44,17 @@ def test_retrieval_answers_known_scam_and_falls_back_on_unknown():
     bot = ScamSpotter()
     assert bot.ask("someone called saying my kyc is expiring", "retrieval").category_id == "fake_kyc"
     assert bot.ask("someone liked all my old photos on social media", "retrieval").status in ("fallback", "off_topic")
+
+
+def test_output_allows_only_verified_contacts():
+    ok = "Report it on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930."
+    assert check_output(ok).ok
+    assert not check_output("Visit paynest-support.com to get your money back.").ok
+    assert not check_output("Call the helpline 18001234 now.").ok
+    assert not check_output("Call our helpline 5555 for a refund.").ok
+
+
+def test_every_kb_answer_passes_output_guardrails():
+    from app.knowledge import load_kb
+    for e in load_kb()["entries"]:
+        assert check_output(e["answer"]).ok, e["id"]
