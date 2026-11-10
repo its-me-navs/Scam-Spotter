@@ -55,16 +55,26 @@ That gap is the case for the hybrid router. Run the same sets with `--phases llm
 
 ## Sources and accuracy
 
-The scam patterns and advice in `data/knowledge_base.json` are paraphrased from public Indian sources, listed with dates and links in the file's `sources` field (checked 2026-10-27):
+The scam patterns and advice in `data/knowledge_base.json` are paraphrased from public Indian sources, listed with dates and links in the file's `sources` field (checked 2026-11-10). Each source is marked `current` (published 2025 or later) or `foundational` (older guidance that is still the best official source for that scam type).
 
-- RBI press release, 13 Sep 2021: frauds in the name of KYC updation
-- RBI press release, 28 Jan 2022: Consumer Awareness - Cyber Threats and Frauds
-- RBI press release, 2 Feb 2024: KYC updation fraud caution (reissued)
-- RBI BE(A)WARE booklet on the modus operandi of financial fraudsters (undated)
-- PIB explainer, 8 Oct 2025: Curbing Cyber Frauds in Digital India
+Current (2025-26):
+- RBI discussion paper, 9 Apr 2026: safeguards in digital payments to curb frauds
+- PIB, 10 Feb 2026: national conference on cyber-enabled frauds
+- PIB, 5 Feb 2026: Chakshu facility of Sanchar Saathi (reporting suspected fraud calls and messages)
+- PIB, 24 Dec 2025: RBI cyber fraud awareness programmes
+- PIB, 2 Dec 2025: Sanchar Saathi app
+- PIB, 8 Oct 2025: Curbing Cyber Frauds in Digital India
+
+Foundational:
+- PIB, 10 Dec 2024: government alert on "digital arrest" scams
+- RBI press releases (Feb 2024, Jan 2022, Sep 2021) and the BE(A)WARE booklet
+- CERT-In awareness booklet, Oct 2023
+
+No 2025-26 official source specific to refund links, "send Rs 1 to receive money", QR / collect-request scams, prize scams or job scams was found, so those entries rest on the foundational sources.
+RBI's March 2026 draft revision of the customer-liability rules is not used, because it is still a draft.
 
 Each entry has `source_ids`, and the UI shows which sources a reply is based on. PayNest itself is fictional, so its app screens, support channel and policies are invented.
-The only real-world contacts the bot may mention are the National Cyber Crime Reporting Portal (cybercrime.gov.in) and the cybercrime helpline 1930. The output guardrail blocks any other website or helpline number as possibly invented.
+The only real-world contacts the bot may mention are the National Cyber Crime Reporting Portal (cybercrime.gov.in), the cybercrime helpline 1930 and the Sanchar Saathi portal (sancharsaathi.gov.in). The output guardrail blocks any other website or helpline number as possibly invented.
 Official contact details and procedures can change, so the answers tell users to confirm them on the official sites.
 NPCI's own safety pages could not be read automatically during research, so they are not cited.
 

@@ -37,11 +37,13 @@
         "Sends a link or asks you to install an app",
         "Asks you to download an app from a link"
       ],
-      "answer": "This looks like a fake KYC scam. PayNest will never call or message you demanding urgent KYC, and will never ask for your OTP, PIN or password. Do not click any link, install any app or share any code. End the call. If you are worried about your KYC status, open the PayNest app yourself and check it there, or contact support through the in-app Help & Support chat. Banks and payment providers only handle KYC through their official app, website or branch. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "answer": "This looks like a fake KYC scam. PayNest will never call or message you demanding urgent KYC, and will never ask for your OTP, PIN or password. Do not click any link, install any app or share any code. End the call. If you are worried about your KYC status, open the PayNest app yourself and check it there, or contact support through the in-app Help & Support chat. Banks and payment providers only handle KYC through their official app, website or branch. You can also report the suspicious call, message or link, even if you lost nothing, through Chakshu on the Sanchar Saathi app or sancharsaathi.gov.in. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
       "source_ids": [
         "RBI-2021-09",
         "RBI-2024-02",
-        "PIB-2025-10"
+        "PIB-2025-10",
+        "PIB-2025-12-02",
+        "PIB-2026-02-05"
       ]
     },
     {
@@ -75,10 +77,11 @@
         "Page asks for card number, PIN or OTP",
         "Pressure to act quickly"
       ],
-      "answer": "Treat this as a phishing attempt. Genuine refunds are credited automatically to your original payment method and never need you to click a link or enter your PIN or OTP. Do not open the link or enter any details. Check your refund status inside the PayNest app under Transaction History, or ask in-app support. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "answer": "Treat this as a phishing attempt. Genuine refunds are credited automatically to your original payment method and never need you to click a link or enter your PIN or OTP. Do not open the link or enter any details. Check your refund status inside the PayNest app under Transaction History, or ask in-app support. You can also report the suspicious call, message or link, even if you lost nothing, through Chakshu on the Sanchar Saathi app or sancharsaathi.gov.in. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
       "source_ids": [
         "RBI-2022-01",
-        "RBI-BEAWARE"
+        "RBI-BEAWARE",
+        "PIB-2026-02-05"
       ]
     },
     {
@@ -115,7 +118,8 @@
       "answer": "This is a known trick. You never need to enter your PIN, approve a request or send any amount in order to receive money. Entering your PIN always sends money out. Decline the request, do not send anything, and block the sender. If you already approved a payment, open in-app support right away. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
       "source_ids": [
         "RBI-2022-01",
-        "RBI-BEAWARE"
+        "RBI-BEAWARE",
+        "CERTIN-2023-10"
       ]
     },
     {
@@ -153,7 +157,9 @@
       "source_ids": [
         "RBI-2021-09",
         "RBI-2022-01",
-        "RBI-BEAWARE"
+        "RBI-BEAWARE",
+        "CERTIN-2023-10",
+        "PIB-2025-12-24"
       ]
     },
     {
@@ -186,7 +192,8 @@
       "source_ids": [
         "RBI-2022-01",
         "RBI-2024-02",
-        "PIB-2025-10"
+        "PIB-2025-10",
+        "PIB-2026-02-10"
       ]
     },
     {
@@ -212,13 +219,16 @@
         "some amount left my wallet and I did not authorise it",
         "I got a debit alert for a transaction I never did",
         "my wallet was charged by a merchant I have never heard of",
-        "an unfamiliar payment appeared in my history"
+        "an unfamiliar payment appeared in my history",
+        "a transaction in my history that I never made",
+        "money left my wallet and I did not authorise it"
       ],
       "red_flags": [],
       "answer": "Open the PayNest app and review Transaction History to confirm it is not a payment you forgot. If it really is unauthorised, change your PIN and password now, then report the transaction through in-app Help & Support with the date, amount and reference number. Also tell your bank if your linked bank account was involved. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
       "source_ids": [
         "RBI-2022-01",
-        "PIB-2025-10"
+        "PIB-2025-10",
+        "PIB-2026-02-10"
       ]
     },
     {
@@ -252,10 +262,13 @@
         "Calls you first without you raising a complaint",
         "Support contact found only on a search result or social media page"
       ],
-      "answer": "Only use the support channel inside the PayNest app (Profile > Help & Support). Numbers from search results, social media or unexpected callers can be fake. Real support will never ask you to share your screen, install remote-access apps or read out codes. If you have already done so, uninstall the app and change your PIN. Get support contacts only from the official app or website. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "answer": "Only use the support channel inside the PayNest app (Profile > Help & Support). Numbers from search results, social media or unexpected callers can be fake. Real support will never ask you to share your screen, install remote-access apps or read out codes. If you have already done so, uninstall the app and change your PIN. Get support contacts only from the official app or website. You can also report the suspicious call, message or link, even if you lost nothing, through Chakshu on the Sanchar Saathi app or sancharsaathi.gov.in. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
       "source_ids": [
         "RBI-2022-01",
-        "RBI-BEAWARE"
+        "RBI-BEAWARE",
+        "CERTIN-2023-10",
+        "PIB-2026-02-05",
+        "RBI-DP-2026-04"
       ]
     },
     {
@@ -327,10 +340,12 @@
         "Request for bank or card details",
         "Upfront fees, taxes or charges to release a prize"
       ],
-      "answer": "This is a prize scam. You cannot win a contest you did not enter, and real prizes never require you to pay a fee or share your PIN or OTP first. Ignore the message, do not click links, and block the sender. Report the message through in-app support if it uses PayNest's name. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "answer": "This is a prize scam. You cannot win a contest you did not enter, and real prizes never require you to pay a fee or share your PIN or OTP first. Ignore the message, do not click links, and block the sender. Report the message through in-app support if it uses PayNest's name. You can also report the suspicious call, message or link, even if you lost nothing, through Chakshu on the Sanchar Saathi app or sancharsaathi.gov.in. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
       "source_ids": [
         "RBI-2022-01",
-        "RBI-BEAWARE"
+        "RBI-BEAWARE",
+        "CERTIN-2023-10",
+        "PIB-2026-02-05"
       ]
     },
     {
@@ -367,9 +382,92 @@
         "Registration, training or equipment fees for a job",
         "Steady, unusually high yearly returns"
       ],
-      "answer": "Be careful. Guaranteed returns, pay-first jobs and tasks that need a deposit are classic scam patterns. Do not transfer money to people you only know online. If you already paid, stop paying more, keep screenshots and report it through in-app support. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "answer": "Be careful. Guaranteed returns, pay-first jobs and tasks that need a deposit are classic scam patterns. Do not transfer money to people you only know online. If you already paid, stop paying more, keep screenshots and report it through in-app support. You can also report the suspicious call, message or link, even if you lost nothing, through Chakshu on the Sanchar Saathi app or sancharsaathi.gov.in. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
       "source_ids": [
-        "RBI-BEAWARE"
+        "RBI-BEAWARE",
+        "PIB-2026-02-05"
+      ]
+    },
+    {
+      "id": "digital_arrest",
+      "category": "Digital arrest or fake police / agency call",
+      "keywords": [
+        "digital arrest",
+        "arrest",
+        "police",
+        "cbi",
+        "ncb",
+        "customs",
+        "narcotics",
+        "parcel",
+        "courier",
+        "fedex",
+        "video call",
+        "warrant",
+        "money laundering",
+        "legal action",
+        "custody",
+        "officer"
+      ],
+      "example_queries": [
+        "someone claiming to be police says I am under digital arrest",
+        "caller says a parcel in my name has drugs and I must stay on a video call",
+        "cbi officer on call says there is a case against me and I must pay to avoid arrest",
+        "they told me not to disconnect the video call and to transfer money for verification",
+        "courier company says illegal items were found in my package and police will arrest me",
+        "caller says my aadhaar is linked to money laundering and I must send money to clear my name"
+      ],
+      "red_flags": [
+        "Caller says they are police, CBI, customs, narcotics or RBI officers",
+        "You are told you are under 'digital arrest' and must stay on a call or video call",
+        "Threat of arrest, plus a demand to transfer money to 'verify' or 'settle' a case",
+        "Call shows an Indian-looking number but may actually come from abroad"
+      ],
+      "answer": "This is a known scam pattern, often called a 'digital arrest'. Fraudsters pretend to be police, CBI, customs, narcotics or RBI officers and threaten arrest to scare you. Genuine agencies do not arrest people over a phone or video call, and they do not ask you to transfer money to 'verify' or 'settle' a case. Do not pay anything, do not share personal or bank details, and do not stay on the call because they tell you to. Hang up and talk to someone you trust. If you want to check whether a case exists, contact your local police station yourself. You can also report the suspicious call, message or link, even if you lost nothing, through Chakshu on the Sanchar Saathi app or sancharsaathi.gov.in. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "PIB-2024-12-10",
+        "RBI-DP-2026-04",
+        "PIB-2025-12-24",
+        "PIB-2026-02-05"
+      ]
+    },
+    {
+      "id": "family_emergency_deepfake",
+      "category": "Family emergency or voice / video impersonation (deepfake)",
+      "keywords": [
+        "accident",
+        "hospital",
+        "emergency",
+        "voice",
+        "video call",
+        "deepfake",
+        "ai voice",
+        "new number",
+        "unknown number",
+        "bail",
+        "cloned",
+        "urgent",
+        "urgently",
+        "immediately"
+      ],
+      "example_queries": [
+        "someone who sounds like my son called saying he had an accident and needs money urgently",
+        "a message from a new number says it is my brother and he needs money now",
+        "I got a video call from a friend asking for urgent money but it looked odd",
+        "caller with my daughter's voice says she is in trouble and asks me to send money",
+        "my relative messaged from an unknown number saying hospital bills must be paid immediately",
+        "is it possible that the voice on the call is fake or ai generated"
+      ],
+      "red_flags": [
+        "Sudden emergency (accident, hospital bills, legal trouble) with a demand for money",
+        "Call or message from a new number claiming to be someone you know",
+        "Voice or video that seems slightly off",
+        "Pressure to pay immediately"
+      ],
+      "answer": "This could be an impersonation scam. Fraudsters can copy someone's voice or face, or message from a new number pretending to be a family member or friend in an emergency such as an accident, hospital bills or legal trouble. Do not send money straight away. Hang up and call the person on the number you already have, or check with another family member. Ask a question only the real person could answer. Be careful even if the voice or video looks convincing, because these can be faked. You can also report the suspicious call, message or link, even if you lost nothing, through Chakshu on the Sanchar Saathi app or sancharsaathi.gov.in. If money has already been lost, report it immediately on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or the cybercrime helpline 1930, and inform your bank. Confirm these details on the official sites, as they can change.",
+      "source_ids": [
+        "RBI-DP-2026-04",
+        "PIB-2026-02-05"
       ]
     }
   ],
@@ -378,43 +476,104 @@
   "refusal_answer": "I cannot help with that. I can explain how to protect your own account or how to recognise scams if that is useful.",
   "injection_answer": "I cannot change my rules or share my instructions. I can still help you check whether a call, message or link looks like a scam.",
   "sensitive_input_warning": "It looks like your message contains a code, PIN, password or card number. Please do not share these with anyone, including me. I have removed it from what I process. If you already shared it with someone, change your PIN in the app now and contact in-app support.",
-  "sources_checked_on": "2026-10-27",
-  "sources_note": "Scam patterns and general advice are paraphrased from the public sources below. PayNest is fictional, so everything PayNest-specific (app screens, support channel, policies) is invented. Helpline numbers and procedures can change: confirm them on the official sites.",
+  "sources_checked_on": "2026-11-10",
+  "sources_note": "Scam patterns and general advice are paraphrased from the public sources below. 'current' = published 2025 or later; 'foundational' = older guidance that is still the best official source for that scam type. PayNest is fictional, so everything PayNest-specific (app screens, support channel, policies) is invented. Helpline numbers and procedures can change: confirm them on the official sites.",
   "sources": [
     {
       "id": "RBI-2021-09",
       "publisher": "Reserve Bank of India",
       "date": "2021-09-13",
       "title": "RBI cautions against frauds in the name of KYC updation (press release)",
-      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=52216"
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=52216",
+      "status": "foundational"
     },
     {
       "id": "RBI-2022-01",
       "publisher": "Reserve Bank of India",
       "date": "2022-01-28",
       "title": "Consumer Awareness - Cyber Threats and Frauds (press release)",
-      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=53185"
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=53185",
+      "status": "foundational"
     },
     {
       "id": "RBI-2024-02",
       "publisher": "Reserve Bank of India",
       "date": "2024-02-02",
       "title": "RBI cautions against frauds in the name of KYC updation (press release, reissued)",
-      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=57244"
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=57244",
+      "status": "foundational"
     },
     {
       "id": "RBI-BEAWARE",
       "publisher": "Reserve Bank of India (Consumer Education and Protection Dept.)",
       "date": "undated",
       "title": "BE(A)WARE: booklet on the modus operandi of financial fraudsters",
-      "url": "https://www.rbi.org.in/commonman/Upload/english/Content/PDFs/English%20BEAWARE.pdf"
+      "url": "https://www.rbi.org.in/commonman/Upload/english/Content/PDFs/English%20BEAWARE.pdf",
+      "status": "foundational"
     },
     {
       "id": "PIB-2025-10",
       "publisher": "Press Information Bureau, Government of India",
       "date": "2025-10-08",
       "title": "Curbing Cyber Frauds in Digital India (explainer)",
-      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=155384&ModuleId=3&reg=48&lang=2"
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=155384&ModuleId=3&reg=48&lang=2",
+      "status": "current"
+    },
+    {
+      "id": "RBI-DP-2026-04",
+      "publisher": "Reserve Bank of India",
+      "date": "2026-04-09",
+      "status": "current",
+      "title": "Discussion Paper: Exploring safeguards in digital payments to curb frauds",
+      "url": "https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=23810"
+    },
+    {
+      "id": "PIB-2026-02-10",
+      "publisher": "Press Information Bureau, Government of India",
+      "date": "2026-02-10",
+      "status": "current",
+      "title": "National Conference on tackling cyber-enabled frauds (Union Home Minister's keynote)",
+      "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2226082&reg=3&lang=2"
+    },
+    {
+      "id": "PIB-2026-02-05",
+      "publisher": "Press Information Bureau (Department of Telecommunications)",
+      "date": "2026-02-05",
+      "status": "current",
+      "title": "Chakshu facility of Sanchar Saathi enables citizens to report suspected fraud communications",
+      "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2223779&reg=3&lang=1"
+    },
+    {
+      "id": "PIB-2025-12-24",
+      "publisher": "Press Information Bureau, Government of India",
+      "date": "2025-12-24",
+      "status": "current",
+      "title": "RBI Panaji organises financial literacy and cyber fraud awareness programmes for citizens, students across Goa",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2208182&reg=3&lang=2"
+    },
+    {
+      "id": "PIB-2025-12-02",
+      "publisher": "Press Information Bureau (Department of Telecommunications)",
+      "date": "2025-12-02",
+      "status": "current",
+      "title": "Sanchar Saathi App: Telecom Empowerment at Citizens' Fingertips",
+      "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=156294&ModuleId=3&reg=3&lang=1"
+    },
+    {
+      "id": "PIB-2024-12-10",
+      "publisher": "Press Information Bureau (Ministry of Home Affairs)",
+      "date": "2024-12-10",
+      "status": "foundational",
+      "title": "Government alert on 'digital arrest' impersonation scams and measures taken (MHA written reply, Lok Sabha)",
+      "url": "https://www.pib.gov.in/Pressreleaseshare.aspx?PRID=2082761&reg=48&lang=2"
+    },
+    {
+      "id": "CERTIN-2023-10",
+      "publisher": "CERT-In, Ministry of Electronics and IT",
+      "date": "2023-10",
+      "status": "foundational",
+      "title": "Cyber Security Awareness Booklet for Digital Nagriks and Digital Enterprises",
+      "url": "https://www.cert-in.org.in/PDF/CSA_Booklet.pdf"
     }
   ]
 }
