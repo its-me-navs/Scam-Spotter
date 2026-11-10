@@ -42,16 +42,39 @@ Phase 1 uses a built-in mock LLM by default so everything runs offline. For a re
 Copy `.env.example` to `.env` and fill in your provider, key and model. The app loads it automatically, and `.env` is git-ignored so your key stays off GitHub.
 (Setting the same names as environment variables also works, and takes priority over `.env`.)
 
-## Results (Phase 2 retrieval, recorded for the later comparison)
+## Languages (English, Hindi, Kannada)
+
+Type in Hindi (Devanagari) or Kannada script and the reply comes back in the same language. Detection is by script, so it works offline.
+Each language has its own retrieval index, guardrail patterns (injection, harmful request, OTP/PIN redaction including Hindi/Kannada digits) and output checks.
+The sidebar (or `--lang hi|kn|en` in the CLI) can force the reply language, which is the way to handle Hindi/Kannada typed in English letters ("Hinglish"); that is **not** auto-detected.
+
+## Live pipeline trace
+
+Both the UI and `python chat.py` show what happens to each message, step by step: language detected, sensitive data found and
+**replaced before anything else sees it**, injection/harm/scope checks, retrieval or model call, output check. The exact text the
+model receives is shown (already redacted), then the checked answer is streamed.
+The answer is only streamed after output guardrails pass it; the raw OTP/PIN is never displayed, stored or sent.
+Use the sidebar slider to slow the steps down for a demo.
+
+## Results (Phase 2 retrieval only; recorded for the later comparison)
+
+Run: `python -m eval.run_eval --cases data/test_cases.json data/test_cases_indic.json --phases retrieval`
+(and the `heldout_*` files for the held-out set).
 
 | set | cases | scam accuracy | wrong answers | safe fallback | correct refusals |
 |---|---|---|---|---|---|
-| dev (used while tuning) | 52 | 100% | 0% | 0% | 100% |
-| held-out (not used for tuning) | 31 | 65% | 0% | 35% | 100% |
+| dev (used while tuning) | 95 (63 en, 16 hi, 16 kn) | 97% | 2% (2 cases) | 2% | 100% |
+| held-out | 69 (37 en, 16 hi, 16 kn) | 72% | 2% | 26% | 100% |
 
-The dev score is optimistic because the knowledge base was tuned on it. The held-out score is the honest one:
-retrieval never gave a wrong answer, but it fell back on 35% of paraphrased scam descriptions.
-That gap is the case for the hybrid router. Run the same sets with `--phases llm hybrid` and a real model to complete the comparison.
+Per language, cases fully correct: dev en 63/63, hi 15/16, kn 15/16; held-out en 30/37, hi 13/16, kn 12/16.
+
+Caveats, please state them if you present these numbers:
+- The dev score is optimistic because the knowledge base was tuned on it. The held-out score is the honest one:
+  retrieval rarely answered wrongly but fell back on about a quarter of paraphrased scam descriptions. That gap motivates the hybrid router.
+- The Hindi/Kannada held-out set was written by me (an AI), not by native speakers. After the first held-out run, three guardrail
+  gaps (Hindi/Kannada injection and harmful-request wording) were fixed, so the held-out refusal score of 100% is no longer a clean
+  blind result for those categories.
+- Mock-LLM numbers are not real LLM results. Run with a real key in `.env` (`--phases llm hybrid`) to complete the comparison.
 
 ## Sources and accuracy
 
@@ -81,5 +104,8 @@ NPCI's own safety pages could not be read automatically during research, so they
 ## Limitations
 
 - Keyword and regex guardrails can be bypassed by unusual phrasing. They are one layer, not a guarantee.
-- The knowledge base is small (10 categories) and English only.
+- The knowledge base is small (12 categories).
+- Hindi and Kannada text (answers, example queries, guardrail patterns) was written by an AI and has **not been reviewed by native speakers**. Have it reviewed before real use.
+- Hinglish / Kannada in Roman letters is detected as English unless you pick the reply language by hand.
+- Only Hindi, Kannada and English are supported; other scripts are treated as English.
 - All support instructions are generic ("in-app Help & Support"). No real phone numbers or procedures are included.

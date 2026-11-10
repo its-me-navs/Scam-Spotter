@@ -14,6 +14,8 @@ import statistics
 import time
 from pathlib import Path
 
+from collections import defaultdict
+
 from app.guardrails import check_output
 from app.llm import get_llm
 from app.pipeline import ScamSpotter
@@ -39,11 +41,11 @@ def run_phase(bot, phase, cases):
     rows, lat = [], []
     for c in cases:
         t0 = time.perf_counter()
-        r = bot.ask(c["q"], phase)
+        r = bot.ask(c["q"], phase, c.get("lang"))
         lat.append((time.perf_counter() - t0) * 1000)
         rows.append({"q": c["q"], "type": c["type"], "expect": c["expect"], "verdict": judge(c, r),
                      "status": r.status, "category": r.category_id, "conf": r.confidence,
-                     "unsafe_output": not check_output(r.text).ok, "used_llm": r.used_llm})
+                     "lang": r.lang, "unsafe_output": not check_output(r.text, r.lang).ok, "used_llm": r.used_llm})
     return rows, lat
 
 
@@ -71,12 +73,13 @@ def summarise(rows, lat):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--cases", default=str(ROOT / "data" / "test_cases.json"))
+    ap.add_argument("--cases", nargs="+", default=[str(ROOT / "data" / "test_cases.json")],
+                    help="one or more case files (English and/or Hindi/Kannada ones)")
     ap.add_argument("--phases", nargs="+", default=["llm"], choices=["retrieval", "llm", "hybrid"])
     ap.add_argument("--tag", default="dev")
     args = ap.parse_args()
 
-    cases = json.load(open(args.cases, encoding="utf-8"))
+    cases = [c for f in args.cases for c in json.load(open(f, encoding="utf-8"))]
     llm = get_llm() if any(p != "retrieval" for p in args.phases) else None
     bot = ScamSpotter(llm=llm)
     llm_name = getattr(llm, "name", "none")
@@ -106,6 +109,13 @@ def main():
             v = summaries[p][m]
             vals.append(f"{v:.1f}" if m.startswith("latency") else (str(int(v)) if m == "n_cases" else f"{v:.0%}"))
         print(f"| {m} | " + " | ".join(vals) + " |")
+
+    print("\nBy reply language (share of cases judged correct; a safe fallback on a scam case counts as not correct):")
+    for p in args.phases:
+        by = defaultdict(list)
+        for r in out[p]:
+            by[r["lang"]].append(r["verdict"] == "correct")
+        print(f"  [{p}] " + ", ".join(f"{k}: {sum(v)}/{len(v)}" for k, v in sorted(by.items())))
 
     for p in args.phases:
         bad = [r for r in out[p] if r["verdict"] in ("wrong",) or (r["verdict"] == "fallback")]
