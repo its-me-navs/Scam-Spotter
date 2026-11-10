@@ -91,6 +91,8 @@ _SCOPE_TERMS = [
     "invest", "job", "buyer", "seller", "request", "collect", "install", "app", "blocked",
     "suspend", "paynest", "balance", "credited", "debited", "transfer", "send", "receive",
     "aadhaar", "pan", "sender", "stranger", "code",
+    "police", "arrest", "cbi", "customs", "narcotics", "parcel", "courier", "warrant", "officer",
+    "relative", "family", "accident", "hospital", "deepfake", "voice", "video call", "emergency",
 ]
 _SCOPE_RE = re.compile("|".join(re.escape(t) for t in _SCOPE_TERMS), re.I)
 
@@ -141,7 +143,7 @@ _FORBIDDEN_CLAIMS_RE = re.compile(r"\b(guarantee|100% (safe|secure)|will definit
 # The only real-world contacts an answer may mention. They come from official sources listed in
 # data/knowledge_base.json ("sources"). Anything else that looks like a domain or helpline number is
 # treated as possibly invented and blocked.
-VERIFIED_CONTACTS = {"cybercrime.gov.in", "1930"}
+VERIFIED_CONTACTS = {"cybercrime.gov.in", "sancharsaathi.gov.in", "1930"}
 _DOMAIN_RE = re.compile(
     r"\b[a-z0-9][a-z0-9\-]*(?:\.[a-z0-9\-]+)*\.(?:com|in|org|net|gov|co|io|app|info|xyz|me)\b", re.I
 )

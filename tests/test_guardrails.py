@@ -58,3 +58,14 @@ def test_every_kb_answer_passes_output_guardrails():
     from app.knowledge import load_kb
     for e in load_kb()["entries"]:
         assert check_output(e["answer"]).ok, e["id"]
+
+
+def test_sancharsaathi_is_allowed_other_domains_are_not():
+    assert check_output("Report it through Chakshu on sancharsaathi.gov.in.").ok
+    assert not check_output("Report it at sancharsaathi.com instead.").ok
+
+
+def test_new_categories_are_retrievable():
+    bot = ScamSpotter()
+    assert bot.ask("caller says I am under digital arrest and must stay on video call", "retrieval").category_id == "digital_arrest"
+    assert bot.ask("a voice like my son called saying he had an accident and needs money", "retrieval").category_id == "family_emergency_deepfake"
