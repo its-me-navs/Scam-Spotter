@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scam Spotter</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <span class="shield" aria-hidden="true">🛡️</span>
+      <div>
+        <h1 id="appTitle">Scam Spotter</h1>
+        <p id="appNote" class="muted small"></p>
+      </div>
+    </div>
+    <button id="settingsBtn" class="icon-btn" aria-expanded="false" aria-controls="drawer" title="Settings">
+      <span aria-hidden="true">⚙️</span><span class="btn-label">Settings</span>
+    </button>
+  </header>
+
+  <div id="mockBanner" class="banner" hidden>
+    No real LLM is configured, so the offline mock model is answering. Set up <code>.env</code> to use Groq or Gemini.
+  </div>
+
+  <main id="chat" class="chat" aria-live="polite"></main>
+
+  <form id="form" class="composer" autocomplete="off">
+    <textarea id="input" rows="1" maxlength="5000"
+      placeholder="Describe a suspicious call, message, link or payment…" aria-label="Your message"></textarea>
+    <button id="send" type="submit">Send</button>
+  </form>
+  <p class="foot muted small">Never share your OTP, PIN or password with anyone, including this bot.</p>
+
+  <div id="scrim" class="scrim" hidden></div>
+  <aside id="drawer" class="drawer" aria-label="Settings" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Settings</h2>
+      <button id="closeBtn" class="icon-btn" aria-label="Close settings">✕</button>
+    </div>
+
+    <div id="phaseRow" class="field" hidden>
+      <label for="phase">Phase</label>
+      <select id="phase"></select>
+    </div>
+    <p id="phaseFixed" class="muted small" hidden></p>
+
+    <div class="field">
+      <label for="lang">Reply language</label>
+      <select id="lang"></select>
+      <p class="muted small">Typing in Hindi or Kannada script is detected automatically. For Hindi/Kannada written in English letters, pick the language here.</p>
+    </div>
+
+    <div class="field">
+      <label for="pace">Step speed <span id="paceVal" class="muted"></span></label>
+      <input id="pace" type="range" min="0" max="1000" step="50">
+      <p class="muted small">Delay between live steps. Slow it down for demos.</p>
+    </div>
+
+    <label class="check"><input id="showSteps" type="checkbox"> Show live steps</label>
+    <label class="check"><input id="showDetails" type="checkbox"> Show category and confidence details</label>
+
+    <div class="field">
+      <button id="clearBtn" type="button" class="danger">Delete this chat history</button>
+    </div>
+  </aside>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
