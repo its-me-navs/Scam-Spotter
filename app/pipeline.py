@@ -125,6 +125,10 @@ class ScamSpotter:
             reply.guardrail_events.append("model call failed")
             return reply
         cid, text = out.get("category_id"), (out.get("answer") or "").strip()
+        try:
+            conf = max(0.0, min(1.0, float(out.get("confidence", 0))))
+        except (TypeError, ValueError):
+            conf = 0.0
         reply = Reply("", phase, "fallback", used_llm=True, lang=lang)
 
         if cid in self.kb["by_id"]:
@@ -147,7 +151,7 @@ class ScamSpotter:
                 reply.guardrail_events += ["output blocked: " + r for r in verdict.reasons]
             reply.text = message(self.kb, "fallback_answer", lang)
             return reply
-        reply.text, reply.status, reply.category_id = text, "answered", cid
+        reply.text, reply.status, reply.category_id, reply.confidence = text, "answered", cid, conf
         return reply
 
     def _run(self, query, phase, lang) -> Iterator[Event]:

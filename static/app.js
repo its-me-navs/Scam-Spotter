@@ -15,7 +15,7 @@ function newId() {
   const a = new Uint8Array(16); crypto.getRandomValues(a);
   return Array.from(a, (b) => b.toString(16).padStart(2, "0")).join("");
 }
-const sessionId = store.get("sessionId", null) || (() => { const id = newId(); store.set("sessionId", id); return id; })();
+const sessionId = newId();
 
 const settings = {
   phase: store.get("phase", null),
@@ -104,7 +104,9 @@ function addTraceItem(ol, status, text) {
 }
 
 function metaLine(a) {
-  const parts = [`${a.status}`, `category: ${a.category_id || "none"}`, `confidence: ${a.confidence}`, `language: ${a.lang}`, `${Math.round(a.latency_ms)} ms`];
+  const parts = [`${a.status}`, `category: ${a.category_id || "none"}`];
+  if (a.status === "answered") parts.push(`confidence: ${a.confidence.toFixed(2)}`);
+  parts.push(`language: ${a.lang}`, `${Math.round(a.latency_ms)} ms`);
   return parts.join(" | ");
 }
 
@@ -272,5 +274,10 @@ $("form").addEventListener("submit", (e) => {
   $("appNote").textContent = config.app_note;
   bindSettings(); updateBanner();
   await loadHistory();
+  input.focus();
+
+  bindSettings(); updateBanner();
+  await loadHistory();      // ← remove this line
+  renderEmpty();            // ← add this line
   input.focus();
 })();
