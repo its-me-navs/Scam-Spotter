@@ -7,6 +7,7 @@ show what the system is doing live. `ask()` runs the same generator and returns 
 Steps never contain the sensitive values themselves: only what kind of data was found. The text shown as
 "what the model will see" is the already-redacted text.
 """
+import logging
 import time
 from dataclasses import dataclass, field
 from typing import Iterator, Optional
@@ -15,6 +16,8 @@ from .guardrails import check_input, check_output
 from .knowledge import entry_answer, load_kb, message
 from .language import EN, LANG_NAMES
 from .retrieval import Retriever
+
+log = logging.getLogger("scamspotter")
 
 HYBRID_RETRIEVAL_CONFIDENCE = 0.45  # at or above this, hybrid trusts retrieval and skips the LLM
 
@@ -47,6 +50,25 @@ def _step(status: str, text: str) -> Event:
 
 def _clip(text: str, n: int = 160) -> str:
     return text if len(text) <= n else text[: n - 1] + "…"
+
+
+def _describe_error(e: Exception) -> str:
+    """A short, safe description for the UI. Never includes the error message itself (it can echo parts of a key)."""
+    code = getattr(e, "status_code", None)
+    hints = {
+        401: "the API key was rejected: check the key in .env.",
+        403: "access denied: check the key and that the model is allowed for it.",
+        404: "model or URL not found: check LLM_MODEL and OPENAI_BASE_URL in .env.",
+        413: "the request was too large for this model or plan.",
+        429: "rate limit or quota reached: wait a bit, or check your plan.",
+    }
+    if code in hints:
+        return f"{type(e).__name__} (HTTP {code}), {hints[code]}"
+    if code:
+        return f"{type(e).__name__} (HTTP {code}). See the server log."
+    if isinstance(e, KeyError):
+        return f"a setting is missing ({e}). Check .env."
+    return f"{type(e).__name__}. If this is a connection error, check OPENAI_BASE_URL and your internet. See the server log."
 
 
 class ScamSpotter:
@@ -94,7 +116,14 @@ class ScamSpotter:
         yield _step("info", f"Sending the redacted text to the language model ({name}), asking for a reply in "
                             f"{LANG_NAMES[lang]}")
         yield _step("info", f"What the model sees: “{_clip(clean)}”")
-        out = self.llm.classify_and_answer(clean, self.kb, lang)
+        try:
+            out = self.llm.classify_and_answer(clean, self.kb, lang)
+        except Exception as e:           # bad key, wrong model name, rate limit, network...
+            log.exception("LLM call failed")
+            yield _step("block", "The model call failed: " + _describe_error(e) + " Showing the safe fallback instead.")
+            reply = Reply(message(self.kb, "fallback_answer", lang), phase, "fallback", used_llm=True, lang=lang)
+            reply.guardrail_events.append("model call failed")
+            return reply
         cid, text = out.get("category_id"), (out.get("answer") or "").strip()
         reply = Reply("", phase, "fallback", used_llm=True, lang=lang)
 

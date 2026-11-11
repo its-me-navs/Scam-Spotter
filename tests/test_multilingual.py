@@ -63,3 +63,19 @@ def test_live_trace_never_contains_secret_and_is_ordered():
     redact_i = next(i for i, t in enumerate(steps) if "Sensitive data found" in t)
     send_i = next(i for i, t in enumerate(steps) if "Sending the redacted text" in t)
     assert redact_i < send_i          # data is removed BEFORE anything is sent to the model
+
+
+def test_llm_failure_gives_safe_fallback_and_hides_error_text():
+    class Broken:
+        name = "openai"
+
+        def classify_and_answer(self, *a, **k):
+            e = Exception("secret sk-abc123")
+            e.status_code = 401
+            raise e
+
+    events = list(ScamSpotter(llm=Broken(), kb=KB).ask_stream("a caller asked for my otp", "llm"))
+    reply = events[-1].reply
+    assert reply.status == "fallback" and "model call failed" in reply.guardrail_events
+    assert "sk-abc123" not in " ".join(e.text for e in events)
+    assert any(e.status == "block" and "401" in e.text for e in events)

@@ -12,6 +12,7 @@
 The answer event is only sent after the output guardrails have passed it.
 """
 import json
+import logging
 import os
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -106,6 +107,7 @@ async def chat(body: ChatIn):
                 else:
                     reply = ev.reply
         except Exception:                              # never leak internals to the browser
+            logging.getLogger("scamspotter").exception("chat request failed")
             yield _sse("error", {"message": "Something went wrong on the server. Please try again."})
             return
         mid = db.save_message(body.session_id, phase, reply, redacted)
