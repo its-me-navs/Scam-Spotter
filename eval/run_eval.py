@@ -77,6 +77,7 @@ def main():
                     help="one or more case files (English and/or Hindi/Kannada ones)")
     ap.add_argument("--phases", nargs="+", default=["llm"], choices=["retrieval", "llm", "hybrid"])
     ap.add_argument("--tag", default="dev")
+    ap.add_argument("--save-db", action="store_true", help="also store the summary in the SQLite database")
     args = ap.parse_args()
 
     cases = [c for f in args.cases for c in json.load(open(f, encoding="utf-8"))]
@@ -98,6 +99,13 @@ def main():
     (results_dir / f"{args.tag}_details.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
     (results_dir / f"{args.tag}_summary.json").write_text(
         json.dumps({"llm_provider": llm_name, "summaries": summaries}, indent=2), encoding="utf-8")
+
+    if args.save_db:
+        from server import db
+        db.init()
+        for p, summ in summaries.items():
+            db.save_eval_run(args.tag, llm_name, p, summ)
+        print(f"(saved {len(summaries)} run(s) to {db.DB_PATH})")
 
     metrics = list(next(iter(summaries.values())).keys())
     print(f"Results ({args.tag}, {len(cases)} cases, llm={llm_name})")

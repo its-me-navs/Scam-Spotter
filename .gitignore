@@ -4,3 +4,7 @@ __pycache__/
 .venv/
 results/
 .streamlit/secrets.toml
+
+# local database
+data/*.db
+data/*.db-journal
