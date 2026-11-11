@@ -13,29 +13,34 @@ To enable them for a later demo, set `SCAMSPOTTER_PHASES=llm,retrieval` (or `llm
 ## Architecture
 
 ```
-user query -> input guardrails -> phase -> output guardrails -> reply
-              (validate, redact,   retrieval | llm | hybrid     (no OTP/PIN requests,
-               injection, harm,                                    no invented contacts)
-               scope checks)
+browser (HTML/CSS/JS)  --POST /api/chat-->  FastAPI  -->  ScamSpotter pipeline  -->  SQLite
+   live steps + answer  <--Server-Sent Events--         input guardrails -> phase -> output guardrails
 ```
 
-- **Phase 1 (`llm`)**: LLM answers, grounded in the knowledge base, returns JSON, checked by output guardrails. Provider is model-agnostic.
-- **Phase 2 (`retrieval`)**: retrieval-based chatbot, no generative AI. TF-IDF + keyword blend, similarity threshold and margin, safe fallback.
+- **Frontend** (`static/`): plain HTML, CSS and JS, no build step. Collapsible Settings drawer (⚙️): reply language, step speed, show/hide steps and details, delete history.
+- **Backend** (`server/main.py`): FastAPI + uvicorn. `POST /api/chat` streams one `step` event per pipeline step as it happens, then one `answer` event.
+  The answer is only sent after the output guardrails pass it.
+- **Database** (`server/db.py`, SQLite): chat history, thumbs up/down feedback, evaluation runs. **Only redacted text is stored**: an OTP/PIN/card number a user types is replaced before saving, so the database never holds it.
+- **Phase 1 (`llm`)**: LLM answers, grounded in the knowledge base, returns JSON, checked by output guardrails. Uses the `openai` SDK (Groq, Gemini or OpenAI via `OPENAI_BASE_URL`); an Anthropic client is optional.
+- **Phase 2 (`retrieval`)**: no generative AI. TF-IDF + keyword blend, similarity threshold and margin, safe fallback.
 - **Hybrid**: retrieval answers when confident; the LLM is called only for unclear queries.
 - **Guardrails (`app/guardrails.py`)**: shared by all phases. Input validation, OTP/PIN/card redaction before anything reaches a model, prompt-injection and harmful-request checks, scope check, output checks.
+
+API: `GET /api/config`, `POST /api/chat`, `POST /api/feedback`, `GET|DELETE /api/history`, `GET /api/stats`. Interactive docs at `/docs` while the server runs.
 
 ## Run
 
 ```bash
 pip install -r requirements.txt
-python chat.py                            # Phase 1 only, by default
-streamlit run ui/streamlit_app.py
-SCAMSPOTTER_PHASES=llm,retrieval streamlit run ui/streamlit_app.py   # later: show Phase 2 too
+uvicorn server.main:app --reload          # then open http://127.0.0.1:8000
+python chat.py                            # optional terminal version
+SCAMSPOTTER_PHASES=llm,retrieval uvicorn server.main:app --reload   # later: show Phase 2 too
 python -m pytest -q tests
-python -m eval.run_eval                                              # Phase 1, dev set
-python -m eval.run_eval --cases data/heldout_cases.json --tag heldout   # Phase 1, held-out set
-python -m eval.run_eval --phases llm retrieval hybrid                 # compare all phases
+python -m eval.run_eval --cases data/test_cases.json data/test_cases_indic.json --phases llm --save-db
+python -m eval.run_eval --cases data/heldout_cases.json data/heldout_cases_indic.json --phases llm --tag heldout
 ```
+
+The database file is created automatically at `data/scamspotter.db` (git-ignored; change with `SCAMSPOTTER_DB`).
 
 Phase 1 uses a built-in mock LLM by default so everything runs offline. For a real model:
 
@@ -46,15 +51,15 @@ Copy `.env.example` to `.env` and fill in your provider, key and model. The app 
 
 Type in Hindi (Devanagari) or Kannada script and the reply comes back in the same language. Detection is by script, so it works offline.
 Each language has its own retrieval index, guardrail patterns (injection, harmful request, OTP/PIN redaction including Hindi/Kannada digits) and output checks.
-The sidebar (or `--lang hi|kn|en` in the CLI) can force the reply language, which is the way to handle Hindi/Kannada typed in English letters ("Hinglish"); that is **not** auto-detected.
+The Settings drawer (or `--lang hi|kn|en` in the CLI) can force the reply language, which is the way to handle Hindi/Kannada typed in English letters ("Hinglish"); that is **not** auto-detected.
 
 ## Live pipeline trace
 
-Both the UI and `python chat.py` show what happens to each message, step by step: language detected, sensitive data found and
+Both the web page and `python chat.py` show what happens to each message, step by step: language detected, sensitive data found and
 **replaced before anything else sees it**, injection/harm/scope checks, retrieval or model call, output check. The exact text the
 model receives is shown (already redacted), then the checked answer is streamed.
 The answer is only streamed after output guardrails pass it; the raw OTP/PIN is never displayed, stored or sent.
-Use the sidebar slider to slow the steps down for a demo.
+Use the step-speed slider in Settings to slow the steps down for a demo.
 
 ## Results (Phase 2 retrieval only; recorded for the later comparison)
 
